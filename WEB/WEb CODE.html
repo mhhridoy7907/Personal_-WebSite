@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Murad — Personal Portfolio</title>
+<link rel="stylesheet" href="sty/css.css">
+</head>
+<body>
+
+<!-- Matrix canvas -->
+<canvas id="matrix"></canvas>
+
+<header class="header">
+  <img src="mm/Ai.jfif" alt="Cover">
+  <h1 class="glitch" data-text="Murad Hasan Hridoy">Murad Hasan Hridoy</h1>
+  <h2 class="processing" data-text="Personal Website">Personal Website</h2>
+</header>
+
+<main class="container">
+  <section class="about">
+    <div class="card">
+      <h2>About Me</h2>
+      <p>My name is Murad Hasan Hridoy.
+I am 20 years old, and I am from Sylhet, Bangladesh.
+I am a passionate learner with a strong interest in IT. I enjoy exploring new technologies, understanding systems, and applying my knowledge in web development, digital marketing, programming, and AI.
+I am constantly seeking opportunities to improve my skills and take on challenging projects.
+Collaborating with like-minded individuals motivates me to think creatively and innovate.
+In the future, I aspire to contribute to impactful tech solutions that can benefit society.</p>
+    </div>
+
+    <img src="mm/MURAD HASAN HRIDOY.jpg" id="mainProfilePic" alt="Profile">
+  </section>
+
+  <section class="skills-section mirror">
+    <div id="profileContainer">
+      <img class="front" src="mm/CADD.jpg" alt="Profile">
+      <div class="login-card">
+        <h2> Web Hidden Door </h2>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <button>ENTER</button>
+        <p><a href="#" style="color:#ff00bf; text-decoration:none;">Forgot Access Key?</a></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Skills</h3>
+      <b>Office Applications:</b> I am proficient in Microsoft Word, Excel, and PowerPoint, which allow me to efficiently create professional documents, analyze data, and design impactful presentations.<br>
+      <b>Digital Marketing:</b> I have experience in SEO, Branding, and Content Creation, enabling me to effectively promote products, enhance brand presence, and develop engaging marketing content online.<br>
+      <b>Programming:</b> I am skilled in Java, Python, and C++, which strengthens my abilities in software development, logical problem-solving, and algorithm design.<br>
+      <b>AI & ML:</b> I have foundational knowledge in Basic Machine Learning and Natural Language Processing (NLP), which helps me approach data-driven problems and develop intelligent solutions.<br>
+      <b>Web Design:</b> I can design responsive and user-friendly websites using HTML, CSS, JavaScript, and Bootstrap, creating engaging online experiences.<br><br>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="card"><h2>My Work Samples</h2></div>
+    <div class="gallery-grid">
+      <div class="scroll-frame"><img src="mm/Web 1.jfif" alt="Web 1"></div>
+      <div class="scroll-frame"><img src="mm/Web 2.jfif" alt="Web 2"></div>
+      <div class="scroll-frame"><img src="mm/Web 3.jfif" alt="Web 3"></div>
+      <div class="scroll-frame"><img src="mm/web 5.jfif" alt="Web 5"></div>
+      <div class="scroll-frame"><img src="mm/web6.jfif" alt="Web 6"></div>
+      <div class="scroll-frame"><img src="mm/web 8.jfif" alt="Web 8"></div>
+      <div class="scroll-frame"><img src="mm/web 4 (1).jfif" alt="Web 4"></div>
+      <div class="scroll-frame"><img src="mm/web 7.jfif" alt="Web 7"></div>
+      <div class="scroll-frame"><img src="mm/web 4 (5).jfif" alt="Web 4-5"></div>
+    </div>
+  </section>
+
+  <!-- CHAT CARD -->
+  <div class="chat-card">
+    <h2>Chat My Personal AI</h2>
+  </div>
+
+  <section class="chat-gallery-section">
+    <!-- MHH AI Chat -->
+    <div class="chat-container">
+      <div class="chat-header">
+        <img src="mm/MURAD HASAN HRIDOY.jpg" id="profilePic" alt="Profile">
+        <h2>MHH AI Assistant</h2>
+      </div>
+      <div class="chat-body" id="chatBody">
+        <div class="bot message">Hello! I am MHH AI — your personal tech assistant <span class="typing"></span></div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Type your message..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+    <!-- Mira AI Chat -->
+    <div class="mira-chat">
+      <div class="chat-header" id="profileBtn">
+        <img src="mm/Mira.jpg" alt="Profile" id="profileImg">
+        <h2>Mira</h2>
+      </div>
+      <div class="messages" id="chatContainer"></div>
+      <div class="input-container">
+        <input type="text" id="miraInput" placeholder="Type a message..." onkeydown="if(event.key==='Enter') sendMiraMessage();">
+        <button onclick="sendMiraMessage()">➤</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="mh-portal-section">
+    <div class="card">
+      <h2>MH Portal</h2>
+      <div class="grid">
+        <!-- Interactive Terminal -->
+        <section class="card span-7">
+          <h3>Interactive Terminal</h3>
+          <div class="terminal" id="portalTerminal">
+            <div class="term-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="term-content" id="portalTermContent"></div>
+            <div class="actions">
+              <button class="btn" id="portalRun">▶ Run Diagnostics</button>
+              <button class="btn" id="portalClear">⟲ Clear</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- System Status -->
+        <section class="card span-5">
+          <h3>System Status</h3>
+          <div class="list">
+            <div class="row"><span class="k">NODE</span><span class="v" id="portalNode">mh2-ai</span></div>
+            <div class="row"><span class="k">IP</span><span class="v" id="portalIP">127.0.0.1</span></div>
+            <div class="row"><span class="k">UPTIME</span><span class="v" id="portalUptime">00:00:00</span></div>
+            <div class="row"><span class="k">ENTROPY</span><span class="v" id="portalEntropy">42%</span></div>
+            <div class="row"><span class="k">BUILD</span><span class="v">v1.0.0-</span></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h1 class="glitch" data-text="MH2 Services MH HRIDOY"> MH2 Services </h1>
+      <div class="tagline" id="tagline"><span class="cursor"></span></div>
+    </div>
+  </section>
+
+  <section class="order-section">
+    <div class="order-card">
+      <h3>Static Website Design</h3>
+      <p>Professional one-page or portfolio websites with elegant modern design.</p>
+      <div class="price">Starting at $50</div>
+      <button>Customize Now</button>
+    </div>
+    <div class="order-card">
+      <h3>Dynamic Website Development</h3>
+      <p>Powerful, database-driven sites with admin panel and full backend support.</p>
+      <div class="price">Starting at $120</div>
+      <button>Customize Now</button>
+    </div>
+    <div class="order-card">
+      <h3>AI Assistant</h3>
+      <p>Custom AI chatbot or virtual assistant powered by GPT and voice control.</p>
+      <div class="price">Starting at $150</div>
+      <button>Customize Now</button>
+    </div>
+    <div class="order-card">
+      <h3>AI Girlfriend Chatbot</h3>
+      <p>Personalized emotional AI companion with memory and smart responses.</p>
+      <div class="price">Starting at $180</div>
+      <button>Customize Now</button>
+    </div>
+    <div class="order-card">
+      <h3>AI Agent</h3>
+      <p>Task automation agents for business, trading, or customer support systems.</p>
+      <div class="price">Starting at $200</div>
+      <button>Customize Now</button>
+    </div>
+    <div class="order-card">
+      <h3>SEO Optimization</h3>
+      <p>Improve your website ranking on Google and increase organic traffic with advanced SEO strategies.</p>
+      <div class="price">Starting at $80</div>
+      <button>Customize Now</button>
+    </div>
+    <div class="order-card">
+      <h3>CMS Web Development</h3>
+      <p>Custom CMS solutions for managing your website content easily.</p>
+      <div class="price">Starting at $130</div>
+      <button>Customize Now</button>
+    </div>
+    <div class="order-card">
+      <h3>Mobile App Development</h3>
+      <p>Create cross-platform mobile applications for iOS and Android with modern UI/UX.</p>
+      <div class="price">Starting at $250</div>
+      <button>Customize Now</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <label>Enter password:</label>
+      <input id="pwd" type="password" placeholder="Try: 123456, password, Hridoy@2025!" />
+      <div class="meter"><i id="bar"></i><div id="unlock" class="unlock">UNLOCKED!</div></div>
+      <div class="info">Strength: <span id="strength">—</span> | Entropy: <span id="entropy">—</span> bits | Crack time: <span id="crack">—</span></div>
+      <button id="toggle">Show/Hide</button>
+      <button id="generate">Generate Strong</button>
+      <button id="clear">Clear</button>
+      <button id="okBtn">OK</button>
+    </div>
+
+    <!-- Final message -->
+    <div id="finalMessage"></div>
+
+    <div id="console"></div>
+    <div class="progress-bar"><div class="progress" id="progress"></div></div>
+  </section>
+</main>
+
+<footer>
+  <div class="card">© Murad Hasan Hridoy</div>
+</footer>
+
+                  <script src="js.js"></script>
+
+</body>
+</html>
