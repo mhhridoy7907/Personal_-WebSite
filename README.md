@@ -1,4 +1,4 @@
-## panding 
+# Pending work
 
 ## 🌐 Live Demo
 
