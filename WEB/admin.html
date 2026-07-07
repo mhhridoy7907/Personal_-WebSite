@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Admin Dashboard - MH Hridoy</title>
+  <link rel="icon" href="https://i.pinimg.com/736x/64/62/d2/6462d22c90c6388a1b8dc48645d57baf.jpg" type="image/jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --violet: #7c3aed;
+      --violet-bright: #8b5cf6;
+      --cyan: #06b6d4;
+      --emerald: #10b981;
+      --rose: #f43f5e;
+      --bg-void: #030712;
+      --bg-base: #060d1a;
+      --bg-surface: #0c1526;
+      --txt-1: #f8fafc;
+      --txt-2: #94a3b8;
+      --txt-3: #475569;
+      --border: rgba(124,58,237,0.2);
+    }
+
+    [data-theme="light"] {
+      --bg-void: #f1f5f9;
+      --bg-base: #f8fafc;
+      --bg-surface: #ffffff;
+      --txt-1: #0f172a;
+      --txt-2: #475569;
+      --txt-3: #94a3b8;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg-void);
+      color: var(--txt-1);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .auth-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-void);
+      padding: 2rem;
+    }
+
+    .auth-box {
+      width: 100%;
+      max-width: 400px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .auth-logo {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .auth-logo h1 {
+      font-size: 1.75rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .auth-logo p {
+      color: var(--txt-3);
+      font-size: 0.875rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--txt-3);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      background: rgba(17,30,51,0.8);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      color: var(--txt-1);
+      transition: border-color 180ms, box-shadow 180ms;
+      font-family: inherit;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--violet);
+      box-shadow: 0 0 0 3px rgba(124,58,237,0.15);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.75rem;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: all 280ms;
+      font-family: inherit;
+      width: 100%;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+      color: #fff;
+      box-shadow: 0 6px 28px rgba(124,58,237,0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(124,58,237,0.55);
+    }
+
+    .btn-primary:active {
+      transform: scale(0.97);
+    }
+
+    .error-msg {
+      background: rgba(244,63,94,0.08);
+      color: var(--rose);
+      border: 1px solid rgba(244,63,94,0.25);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.825rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .error-msg.show {
+      display: block;
+    }
+
+    .admin-container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: var(--bg-surface);
+      border-right: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      position: fixed;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .sidebar-logo {
+      font-size: 1.2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .sidebar-nav-item {
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar-nav-item a {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      color: var(--txt-3);
+      text-decoration: none;
+      border-radius: 10px;
+      transition: all 180ms;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .sidebar-nav-item a:hover,
+    .sidebar-nav-item a.active {
+      color: var(--txt-1);
+      background: rgba(124,58,237,0.1);
+    }
+
+    .sidebar-nav-item a.active {
+      color: var(--violet-bright);
+    }
+
+    .sidebar-user {
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(124,58,237,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--violet);
+      font-weight: 700;
+    }
+
+    .user-details {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .user-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--txt-1);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .user-email {
+      font-size: 0.7rem;
+      color: var(--txt-3);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .logout-btn {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      background: rgba(244,63,94,0.1);
+      color: var(--rose);
+      border: 1px solid rgba(244,63,94,0.25);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 180ms;
+      font-family: inherit;
+    }
+
+    .logout-btn:hover {
+      background: rgba(244,63,94,0.15);
+      border-color: var(--rose);
+    }
+
+    .main-content {
+      flex: 1;
+      margin-left: 250px;
+      padding: 2rem;
+    }
+
+    .page-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .page-title {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      color: var(--txt-1);
+    }
+
+    .page-subtitle {
+      color: var(--txt-2);
+      font-size: 0.95rem;
+    }
+
+    .projects-section {
+      display: none;
+    }
+
+    .projects-section.active {
+      display: block;
+    }
+
+    .add-project-btn {
+      background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: all 180ms;
+      margin-bottom: 2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: inherit;
+    }
+
+    .add-project-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(124,58,237,0.4);
+    }
+
+    .projects-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 280ms;
+    }
+
+    .project-item:hover {
+      border-color: var(--violet);
+      box-shadow: 0 12px 40px rgba(124,58,237,0.2);
+      transform: translateY(-4px);
+    }
+
+    .project-thumb {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: rgba(17,30,51,0.6);
+    }
+
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 300ms;
+    }
+
+    .project-item:hover .project-thumb img {
+      transform: scale(1.05);
+    }
+
+    .project-body {
+      padding: 1.5rem;
+    }
+
+    .project-title {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: var(--txt-1);
+    }
+
+    .project-desc {
+      font-size: 0.8rem;
+      color: var(--txt-3);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .btn-small {
+      flex: 1;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--txt-2);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: all 180ms;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+    }
+
+    .btn-small:hover {
+      border-color: var(--violet);
+      color: var(--txt-1);
+      background: rgba(124,58,237,0.08);
+    }
+
+    .btn-small.delete {
+      border-color: rgba(244,63,94,0.3);
+      color: var(--rose);
+    }
+
+    .btn-small.delete:hover {
+      background: rgba(244,63,94,0.08);
+      border-color: var(--rose);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--txt-1);
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--txt-2);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 180ms;
+    }
+
+    .modal-close:hover {
+      color: var(--txt-1);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-row.full {
+      grid-template-columns: 1fr;
+    }
+
+    .form-group textarea {
+      width: 100%;
+      background: rgba(17,30,51,0.8);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      color: var(--txt-1);
+      font-family: inherit;
+      resize: vertical;
+      min-height: 100px;
+      transition: border-color 180ms, box-shadow 180ms;
+    }
+
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--violet);
+      box-shadow: 0 0 0 3px rgba(124,58,237,0.15);
+    }
+
+    .tags-input {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      padding: 0.5rem;
+      background: rgba(17,30,51,0.8);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+      min-height: 40px;
+      align-items: center;
+    }
+
+    .tag {
+      background: rgba(124,58,237,0.2);
+      color: var(--violet-bright);
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .tag button {
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      font-size: 0.9rem;
+      padding: 0;
+    }
+
+    .tags-input input {
+      border: none;
+      background: transparent;
+      color: var(--txt-1);
+      font-size: 0.875rem;
+      flex: 1;
+      outline: none;
+      min-width: 100px;
+      font-family: inherit;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .modal-actions button {
+      flex: 1;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: all 180ms;
+      font-family: inherit;
+    }
+
+    .modal-actions .btn-primary {
+      background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+      color: #fff;
+    }
+
+    .modal-actions .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .modal-actions .btn-cancel {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--txt-2);
+    }
+
+    .modal-actions .btn-cancel:hover {
+      border-color: var(--violet);
+      color: var(--txt-1);
+      background: rgba(124,58,237,0.08);
+    }
+
+    .success-msg {
+      background: rgba(16,185,129,0.08);
+      color: var(--emerald);
+      border: 1px solid rgba(16,185,129,0.25);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.825rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .success-msg.show {
+      display: block;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--txt-3);
+    }
+
+    .empty-state i {
+      font-size: 3rem;
+      opacity: 0.3;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .sidebar {
+        width: 80px;
+      }
+
+      .sidebar-logo {
+        font-size: 0.9rem;
+      }
+
+      .sidebar-nav-item a {
+        justify-content: center;
+        padding: 0.75rem;
+      }
+
+      .sidebar-nav-item a span {
+        display: none;
+      }
+
+      .main-content {
+        margin-left: 80px;
+      }
+
+      .user-info {
+        flex-direction: column;
+      }
+
+      .user-details {
+        display: none;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .sidebar {
+        width: 60px;
+      }
+
+      .sidebar-logo {
+        font-size: 0.75rem;
+      }
+
+      .main-content {
+        margin-left: 60px;
+        padding: 1rem;
+      }
+
+      .modal-content {
+        padding: 1.5rem;
+      }
+
+      .projects-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-screen" id="authScreen">
+    <div class="auth-box">
+      <div class="auth-logo">
+        <h1>MH Hridoy</h1>
+        <p>Admin Dashboard</p>
+      </div>
+      <div class="error-msg" id="authError"></div>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" required placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn btn-primary">
+          <i class="fa-solid fa-sign-in-alt"></i> Sign In
+        </button>
+      </form>
+      <div style="margin-top: 1rem; text-align: center; color: var(--txt-3); font-size: 0.8rem;">
+        <p>Use Firebase Auth credentials to login</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-container" id="adminContainer" style="display: none;">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <i class="fa-solid fa-rocket"></i>
+        <span>Admin</span>
+      </div>
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-item">
+          <a href="#" class="nav-link active" data-section="projects">
+            <i class="fa-solid fa-folder"></i>
+            <span>Projects</span>
+          </a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#" class="nav-link" data-section="research">
+            <i class="fa-solid fa-flask"></i>
+            <span>Research</span>
+          </a>
+        </li>
+      </ul>
+      <div class="sidebar-user">
+        <div class="user-info">
+          <div class="user-avatar" id="userInitial">A</div>
+          <div class="user-details">
+            <div class="user-name" id="userName">Admin User</div>
+            <div class="user-email" id="userEmail">admin@example.com</div>
+          </div>
+        </div>
+        <button class="logout-btn" id="logoutBtn">
+          <i class="fa-solid fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <section class="projects-section active" id="projectsSection">
+        <div class="page-header">
+          <h1 class="page-title">Projects</h1>
+          <p class="page-subtitle">Manage your portfolio projects</p>
+        </div>
+        <div class="success-msg" id="successMsg"></div>
+        <button class="add-project-btn" id="addProjectBtn">
+          <i class="fa-solid fa-plus"></i> Add New Project
+        </button>
+        <div class="projects-list" id="projectsList">
+          <div class="empty-state">
+            <i class="fa-solid fa-inbox"></i>
+            <p>No projects yet. Create one to get started!</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="projects-section" id="researchSection">
+        <div class="page-header">
+          <h1 class="page-title">Research & Notes</h1>
+          <p class="page-subtitle">Manage your research entries</p>
+        </div>
+        <div class="success-msg" id="successMsg2"></div>
+        <button class="add-project-btn" id="addResearchBtn">
+          <i class="fa-solid fa-plus"></i> Add New Research
+        </button>
+        <div class="projects-list" id="researchList">
+          <div class="empty-state">
+            <i class="fa-solid fa-inbox"></i>
+            <p>No research entries yet. Create one to get started!</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="itemModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">Add New Project</h2>
+        <button class="modal-close" id="modalClose">
+          <i class="fa-solid fa-times"></i>
+        </button>
+      </div>
+      <form id="itemForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="itemName">Project Name *</label>
+            <input type="text" id="itemName" required placeholder="e.g., Real-Time Chat App">
+          </div>
+          <div class="form-group">
+            <label for="itemImg">Image URL *</label>
+            <input type="url" id="itemImg" required placeholder="https://example.com/image.jpg">
+          </div>
+        </div>
+
+        <div class="form-row full">
+          <div class="form-group">
+            <label for="itemShortDesc">Short Description *</label>
+            <textarea id="itemShortDesc" required placeholder="Brief description of your project..."></textarea>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="itemCodeLink">GitHub/Code Link</label>
+            <input type="url" id="itemCodeLink" placeholder="https://github.com/username/repo">
+          </div>
+          <div class="form-group">
+            <label for="itemLiveLink">Live Demo Link</label>
+            <input type="url" id="itemLiveLink" placeholder="https://example.com">
+          </div>
+        </div>
+
+        <div class="form-row full">
+          <div class="form-group">
+            <label for="itemTags">Tags</label>
+            <div class="tags-input" id="tagsInput">
+              <input type="text" id="itemTags" placeholder="Type tag and press Enter...">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row full">
+          <div class="form-group">
+            <label for="itemCaseStudy">Case Study / Description</label>
+            <textarea id="itemCaseStudy" placeholder="Detailed information about your project..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" id="modalCancel">Cancel</button>
+          <button type="submit" class="btn-primary">
+            <i class="fa-solid fa-save"></i> <span id="submitBtnText">Save Project</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+    import { getDatabase, ref, push, onValue, update, remove } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIza*******************mavo",
+      authDomain: "mh*******************m",
+      databaseURL: "htt*******************se.app",
+      projectId: "mh2-hridoy",
+      storageBucket: "mh*******************.app",
+      messagingSenderId: "10*******************06",
+      appId: "*******************4b",
+      measurementId: "G-R*******************EVE"
+    };
+
+    const fbApp = initializeApp(firebaseConfig);
+    const auth = getAuth(fbApp);
+    const db = getDatabase(fbApp);
+
+    const authScreen = document.getElementById('authScreen');
+    const adminContainer = document.getElementById('adminContainer');
+    const loginForm = document.getElementById('loginForm');
+    const authError = document.getElementById('authError');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const userName = document.getElementById('userName');
+    const userEmail = document.getElementById('userEmail');
+    const userInitial = document.getElementById('userInitial');
+
+    const projectsList = document.getElementById('projectsList');
+    const researchList = document.getElementById('researchList');
+    const addProjectBtn = document.getElementById('addProjectBtn');
+    const addResearchBtn = document.getElementById('addResearchBtn');
+
+    const itemModal = document.getElementById('itemModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalClose = document.getElementById('modalClose');
+    const modalCancel = document.getElementById('modalCancel');
+    const itemForm = document.getElementById('itemForm');
+    const submitBtnText = document.getElementById('submitBtnText');
+
+    const tagsInput = document.getElementById('tagsInput');
+    const itemTags = document.getElementById('itemTags');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const projectsSection = document.getElementById('projectsSection');
+    const researchSection = document.getElementById('researchSection');
+
+    let currentUser = null;
+    let currentEditingId = null;
+    let currentSection = 'projects';
+    let allTags = [];
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        authError.classList.remove('show');
+        await signInWithEmailAndPassword(auth, email, password);
+      } catch (err) {
+        authError.textContent = err.message;
+        authError.classList.add('show');
+      }
+    });
+
+    logoutBtn.addEventListener('click', async () => {
+      await signOut(auth);
+    });
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        currentUser = user;
+        authScreen.style.display = 'none';
+        adminContainer.style.display = 'flex';
+        userName.textContent = user.displayName || user.email;
+        userEmail.textContent = user.email;
+        userInitial.textContent = user.email[0].toUpperCase();
+        loadProjects();
+        loadResearch();
+      } else {
+        currentUser = null;
+        authScreen.style.display = 'flex';
+        adminContainer.style.display = 'none';
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const section = link.dataset.section;
+        currentSection = section;
+        
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        if (section === 'projects') {
+          projectsSection.classList.add('active');
+          researchSection.classList.remove('active');
+        } else {
+          projectsSection.classList.remove('active');
+          researchSection.classList.add('active');
+        }
+      });
+    });
+
+    itemTags.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const tag = itemTags.value.trim();
+        if (tag && !allTags.includes(tag)) {
+          allTags.push(tag);
+          renderTags();
+          itemTags.value = '';
+        }
+      }
+    });
+
+    function renderTags() {
+      const tagsHtml = allTags.map(tag => `
+        <span class="tag">
+          ${tag}
+          <button type="button" onclick="removeTag('${tag}')">×</button>
+        </span>
+      `).join('');
+      tagsInput.innerHTML = tagsHtml + '<input type="text" id="itemTags" placeholder="Type tag and press Enter...">';
+      document.getElementById('itemTags').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          const tag = e.target.value.trim();
+          if (tag && !allTags.includes(tag)) {
+            allTags.push(tag);
+            renderTags();
+          }
+        }
+      });
+    }
+
+    window.removeTag = (tag) => {
+      allTags = allTags.filter(t => t !== tag);
+      renderTags();
+    };
+
+    function openModal(title, editing = false) {
+      modalTitle.textContent = title;
+      submitBtnText.textContent = editing ? 'Update' : 'Save';
+      itemForm.reset();
+      allTags = [];
+      renderTags();
+      currentEditingId = null;
+      itemModal.classList.add('active');
+    }
+
+    modalClose.addEventListener('click', () => {
+      itemModal.classList.remove('active');
+      currentEditingId = null;
+    });
+
+    modalCancel.addEventListener('click', () => {
+      itemModal.classList.remove('active');
+      currentEditingId = null;
+    });
+
+    addProjectBtn.addEventListener('click', () => {
+      openModal(`Add New Project`);
+    });
+
+    addResearchBtn.addEventListener('click', () => {
+      openModal(`Add New Research`);
+    });
+
+    itemForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const data = {
+        name: document.getElementById('itemName').value,
+        shortDesc: document.getElementById('itemShortDesc').value,
+        img: document.getElementById('itemImg').value,
+        codeLink: document.getElementById('itemCodeLink').value || '',
+        liveLink: document.getElementById('itemLiveLink').value || '',
+        caseStudy: document.getElementById('itemCaseStudy').value || '',
+        tags: allTags,
+        createdAt: currentEditingId ? undefined : Date.now(),
+        updatedAt: Date.now()
+      };
+
+      try {
+        const refPath = currentSection === 'projects' ? 'projects' : 'research';
+        
+        if (currentEditingId) {
+          await update(ref(db, `${refPath}/${currentEditingId}`), data);
+          showSuccess('Updated successfully!');
+        } else {
+          await push(ref(db, refPath), data);
+          showSuccess('Created successfully!');
+        }
+
+        itemModal.classList.remove('active');
+        itemForm.reset();
+        allTags = [];
+      } catch (err) {
+        console.error('Error:', err);
+      }
+    });
+
+    function loadProjects() {
+      onValue(ref(db, 'projects'), (snapshot) => {
+        const data = snapshot.val();
+        if (!data) {
+          projectsList.innerHTML = '<div class="empty-state"><i class="fa-solid fa-inbox"></i><p>No projects yet. Create one to get started!</p></div>';
+          return;
+        }
+
+        projectsList.innerHTML = Object.entries(data).map(([id, project]) => `
+          <div class="project-item">
+            <div class="project-thumb">
+              <img src="${project.img}" alt="${project.name}" onerror="this.src='https://via.placeholder.com/300x200?text=${encodeURIComponent(project.name)}'">
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">${project.name}</h3>
+              <p class="project-desc">${project.shortDesc}</p>
+              <div class="project-actions">
+                <button class="btn-small" onclick="editProject('${id}')">
+                  <i class="fa-solid fa-edit"></i> Edit
+                </button>
+                <button class="btn-small delete" onclick="deleteProject('${id}')">
+                  <i class="fa-solid fa-trash"></i> Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      });
+    }
+
+    function loadResearch() {
+      onValue(ref(db, 'research'), (snapshot) => {
+        const data = snapshot.val();
+        if (!data) {
+          researchList.innerHTML = '<div class="empty-state"><i class="fa-solid fa-inbox"></i><p>No research entries yet. Create one to get started!</p></div>';
+          return;
+        }
+
+        researchList.innerHTML = Object.entries(data).map(([id, item]) => `
+          <div class="project-item">
+            <div class="project-thumb">
+              <img src="${item.img}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/300x200?text=${encodeURIComponent(item.name)}'">
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">${item.name}</h3>
+              <p class="project-desc">${item.shortDesc}</p>
+              <div class="project-actions">
+                <button class="btn-small" onclick="editResearch('${id}')">
+                  <i class="fa-solid fa-edit"></i> Edit
+                </button>
+                <button class="btn-small delete" onclick="deleteResearch('${id}')">
+                  <i class="fa-solid fa-trash"></i> Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      });
+    }
+
+    window.editProject = async (id) => {
+      const snapshot = await fetch(`https://mh2-hridoy-default-rtdb.asia-southeast1.firebasedatabase.app/projects/${id}.json`);
+      const project = await snapshot.json();
+      
+      document.getElementById('itemName').value = project.name;
+      document.getElementById('itemImg').value = project.img;
+      document.getElementById('itemShortDesc').value = project.shortDesc;
+      document.getElementById('itemCodeLink').value = project.codeLink || '';
+      document.getElementById('itemLiveLink').value = project.liveLink || '';
+      document.getElementById('itemCaseStudy').value = project.caseStudy || '';
+      allTags = project.tags || [];
+      currentEditingId = id;
+      currentSection = 'projects';
+      renderTags();
+      openModal('Edit Project', true);
+    };
+
+    window.deleteProject = async (id) => {
+      if (confirm('Are you sure you want to delete this project?')) {
+        await remove(ref(db, `projects/${id}`));
+      }
+    };
+
+    window.editResearch = async (id) => {
+      const snapshot = await fetch(`https://mh2-hridoy-default-rtdb.asia-southeast1.firebasedatabase.app/research/${id}.json`);
+      const item = await snapshot.json();
+      
+      document.getElementById('itemName').value = item.name;
+      document.getElementById('itemImg').value = item.img;
+      document.getElementById('itemShortDesc').value = item.shortDesc;
+      document.getElementById('itemCodeLink').value = item.codeLink || '';
+      document.getElementById('itemLiveLink').value = item.liveLink || '';
+      document.getElementById('itemCaseStudy').value = item.caseStudy || '';
+      allTags = item.tags || [];
+      currentEditingId = id;
+      currentSection = 'research';
+      renderTags();
+      openModal('Edit Research', true);
+    };
+
+    window.deleteResearch = async (id) => {
+      if (confirm('Are you sure you want to delete this research entry?')) {
+        await remove(ref(db, `research/${id}`));
+      }
+    };
+
+    function showSuccess(msg) {
+      const msgEl = currentSection === 'projects' ? document.getElementById('successMsg') : document.getElementById('successMsg2');
+      msgEl.textContent = msg;
+      msgEl.classList.add('show');
+      setTimeout(() => msgEl.classList.remove('show'), 3000);
+    }
+  </script>
+
+</body>
+</html>
