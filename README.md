@@ -85,7 +85,7 @@ A modern, full-featured personal portfolio website built with vanilla JavaScript
 
 ```
 Personal_-WebSite/
- └──Code/ 
+ └──WEB/ 
         ├── index.html          # Main portfolio website
         ├── admin.html          # Admin dashboard (protected)
         ├── styles/             # CSS files (inline in HTML)
