@@ -1,4 +1,4 @@
-# MH2 HRIDOY — Personal Portfolio
+# MH2 HRIDOY  Personal Portfolio
 
 <p align="center">
   <img src="https://i.pinimg.com/736x/78/8f/4a/788f4aac6662168309239d653f205979.jpg" width="120" alt="MH2 HRIDOY">
