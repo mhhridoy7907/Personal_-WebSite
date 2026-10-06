@@ -1,7 +1,7 @@
 # MH2 HRIDOY — Personal Portfolio
 
 <p align="center">
-  <img src="https://i.pinimg.com/736x/64/62/d2/6462d22c90c6388a1b8dc48645d57baf.jpg" width="120" alt="MH2 HRIDOY">
+  <img src="https://i.pinimg.com/736x/78/8f/4a/788f4aac6662168309239d653f205979.jpg" width="120" alt="MH2 HRIDOY">
 </p>
 
 <h1 align="center">MH2 HRIDOY</h1>
