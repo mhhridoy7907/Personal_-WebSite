@@ -28,21 +28,6 @@ I'm currently pursuing a **Bachelor's degree in Computer Science & Engineering**
 
 > **Building ideas into real, working software.**
 
----
-
-## 🌐 Live Demo
-
-Experience the **MH2 HRIDOY Personal Portfolio** live:
-
-<p align="center">
-  <a href="https://mh2-hridoy.web.app/" target="_blank">
-    <strong>🚀 Visit Live Portfolio →</strong>
-  </a>
-</p>
-
-**Live Website:** https://mh2-hridoy.web.app/
-
-The live portfolio showcases my projects, technical skills, GitHub activity, developer profile, and contact information through a modern interactive interface.
 
 ---
 
