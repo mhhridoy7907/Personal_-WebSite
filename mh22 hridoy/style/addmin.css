@@ -1,5 +1,4 @@
-
-  :root{
+:root{
     --bg-void:#030712; --bg-base:#060d1a; --bg-surface:#0c1526; --bg-elevated:#111e33;
     --bg-glass:rgba(11,20,40,0.75);
     --violet:#7c3aed; --violet-bright:#8b5cf6; --cyan:#06b6d4; --cyan-soft:#22d3ee;
@@ -189,3 +188,4 @@
   @keyframes spin{ to{ transform:rotate(360deg); } }
 
   #boot-loader{ position:fixed; inset:0; background:var(--bg-void); z-index:9999; display:flex; align-items:center; justify-content:center; }
+

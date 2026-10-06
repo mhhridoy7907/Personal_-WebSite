@@ -1,16 +1,17 @@
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 import { getDatabase, ref, push, set, update, remove, onValue, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
 
 const firebaseConfig = {
-  apiKey: "AIz**********************mavo",
-  authDomain: "mh**********************com",
-  databaseURL: "https:**********************asedatabase.app",
-  projectId: "mh**********************y",
-  storageBucket: "**********************.app",
-  messagingSenderId: "10**********************506",
-  appId: "1:102**********************2c84372384b",
-  measurementId: "G-R**********************6EVE"
+  apiKey: "AI***********************o",
+  authDomain: "mh2-**********************com",
+  databaseURL: "http*********************e.app",
+  projectId: "mh2******************oy",
+  storageBucket: "mh2-h*******************pp",
+  messagingSenderId: "102************506",
+  appId: "1:102966351506:web:6*********************84b",
+  measurementId: "G-R************6**EVE"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -67,7 +68,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
 
 document.getElementById("logout-btn").addEventListener("click", () => signOut(auth));
 
-
+/* ---------- Realtime projects list ---------- */
 function listenProjects() {
   onValue(projectsRef, (snap) => {
     allProjects = snap.val() || {};

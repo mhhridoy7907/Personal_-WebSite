@@ -1,382 +1,331 @@
-# 🚀 MH Hridoy - Personal Portfolio
+# MH2 HRIDOY — Personal Portfolio
 
-A modern, full-featured personal portfolio website built with vanilla JavaScript, Firebase, and modern web technologies. Showcasing projects, skills, and GitHub activity with a sleek dark theme and smooth animations.
+<p align="center">
+  <img src="https://i.pinimg.com/736x/64/62/d2/6462d22c90c6388a1b8dc48645d57baf.jpg" width="120" alt="MH2 HRIDOY">
+</p>
 
-**[Live Demo](https://mh2-hridoy.web.app/)** 
+<h1 align="center">MH2 HRIDOY</h1>
+
+<p align="center">
+  <strong>Full-Stack Developer • Firebase Specialist • Node.js Engineer • AI Developer</strong>
+</p>
+
+<p align="center">
+  <a href="https://mh2-hridoy.web.app/">🌐 Portfolio</a> •
+  <a href="https://github.com/mhhridoy7907">GitHub</a> •
+  <a href="mailto:mhhridoy7907@gmail.com">Email</a>
+</p>
 
 ---
 
-## ✨ Features
+## 🚀 About
 
-### 🎨 **Modern UI/UX**
-- Responsive design optimized for all devices (mobile, tablet, desktop)
-- Dark mode with smooth theme toggle
-- Custom animated cursor
-- Glassmorphism design with backdrop blur effects
-- Smooth scroll animations and reveal effects
-- Animated typing effect for hero section
+**MH2 HRIDOY (Murad Hasan Hridoy)** is a Full-Stack Developer from **Sylhet, Bangladesh**, focused on building modern, scalable and production-ready digital products.
 
-### 📊 **Dynamic Content**
-- **Real-time Project Management**: Projects loaded live from Firebase Realtime Database
-- **GitHub Integration**: Live stats (repos, followers) via GitHub API
-- **Project Showcase**: Featured projects with thumbnails, descriptions, and links
-- **GitHub Activity**: Contribution streak and activity graph visualization
-- **Automated Tech Stack Ticker**: Scrolling technology carousel
+I work primarily with **JavaScript, Node.js, Firebase, MongoDB and AI/LLM APIs**, with a strong interest in real-time applications, cloud technologies and modern web experiences.
 
-### 🔐 **Admin Dashboard**
-- Secure admin panel for project management
-- Firebase Authentication (email/password login)
-- Create, edit, and delete projects
-- Live preview of project cards
-- Search and filter functionality
-- Project status management (Live, Draft, Archived)
-- Featured project toggle
-- Real-time statistics
+I'm currently pursuing a **Bachelor's degree in Computer Science & Engineering** at **RTM Al-Kabir Technical University**.
 
-### 📧 **Contact Management**
-- Contact form with validation
-- Google Apps Script integration for email notifications
-- Multiple contact channels (Email, WhatsApp, GitHub, Facebook)
-- Form status feedback (success/error messages)
+> **Building ideas into real, working software.**
 
-### ♿ **Accessibility**
-- Semantic HTML5 structure
-- ARIA labels and roles
-- Keyboard navigation support
-- High contrast ratios
-- Focus-visible states
-- Screen reader friendly
+---
 
-### ⚡ **Performance**
-- Optimized animations with CSS transforms
-- Lazy loading for images
-- Reduced motion support for users with motion sensitivity
-- Efficient Firebase real-time listeners
-- Minimal JavaScript bundle size
+## 🌐 Live Demo
+
+Experience the **MH2 HRIDOY Personal Portfolio** live:
+
+<p align="center">
+  <a href="https://mh2-hridoy.web.app/" target="_blank">
+    <strong>🚀 Visit Live Portfolio →</strong>
+  </a>
+</p>
+
+**Live Website:** https://mh2-hridoy.web.app/
+
+The live portfolio showcases my projects, technical skills, GitHub activity, developer profile, and contact information through a modern interactive interface.
+
+---
+
+## ✨ Portfolio Highlights
+
+- ⚡ Modern responsive portfolio
+- 🌙 Dark / Light theme
+- 🎨 Interactive neon glass UI
+- 🖱️ Custom liquid cursor and ripple effects
+- ✨ Animated background
+- 📊 Live GitHub statistics
+- 🚀 Firebase-powered dynamic projects
+- 📁 Project details modal
+- 📬 Working contact form
+- 📱 Mobile-responsive design
+- ♿ Accessibility-focused structure
+- 🔍 SEO-friendly metadata
+- ⚡ Lightweight static architecture
 
 ---
 
 ## 🛠️ Tech Stack
 
-### **Frontend**
-- HTML5, CSS3, Vanilla JavaScript (ES6+)
-- Custom CSS variables for theming
-- Font Awesome 6.7 for icons
-- Google Fonts (Inter, JetBrains Mono)
+### Frontend
 
-### **Backend & Database**
-- **Firebase Realtime Database** - Project data storage
-- **Firebase Authentication** - Admin login
-- **Firebase Hosting** - Site deployment
+| Technology | Usage |
+|---|---|
+| HTML5 | Semantic website structure |
+| CSS3 | Responsive UI & animations |
+| JavaScript | Application logic & interactions |
+| Font Awesome | Icons |
 
-### **External APIs**
-- GitHub API - User stats and profile data
-- GitHub Streak Stats - Contribution visualization
-- GitHub Readme Activity Graph - Activity heatmap
+### Backend & Cloud
 
-### **Build & Tools**
-- Vanilla JS (no frameworks)
-- Modular ES6 imports
-- Firebase SDK v12.0.0
+| Technology | Usage |
+|---|---|
+| Firebase Realtime Database | Dynamic project management |
+| Firebase Authentication | Firebase integration |
+| Google Apps Script | Contact form processing |
+| GitHub API | Live developer statistics |
+
+### Tools & Platforms
+
+- Git & GitHub
+- Firebase Hosting
+- VS Code
+- Node.js
+- Google Apps Script
 
 ---
 
-## 📁 Project Structure
+## 📂 Project Architecture
 
+```text
+mh22 hridoy/
+│
+├── index.html 
+├── admin.html
+│
+├── style/
+│   ├── admin.css
+│   └── web.css
+│
+├── script/
+│   ├── admin.js
+│   └── web.js
+│
+├── assets/
+│   └── .......
+├── LICENSE
+└── README.md
 ```
-Personal_-WebSite/
- └──WEB/ 
-        ├── index.html          # Main portfolio website
-        ├── admin.html          # Admin dashboard (protected)
-        ├── styles/             # CSS files (inline in HTML)
-        ├── scripts/            # JavaScript modules (inline in HTML)
-        └── README.md           # This file
+
+The project follows a simple **HTML + CSS + JavaScript** architecture without requiring a frontend build system.
+
+---
+
+## 🔥 Dynamic Project System
+
+Projects are not hardcoded directly into the HTML.
+
+The portfolio uses **Firebase Realtime Database** to manage published projects dynamically.
+
+```text
+Firebase Realtime Database
+          │
+          ▼
+   portfolio/projects
+          │
+          ▼
+      web.js
+          │
+          ▼
+   Project Grid
+          │
+          ▼
+    Project Modal
 ```
 
-### Key Sections of index.html
-
-1. **Home/Hero** - Introduction with typed effect and CTA buttons
-2. **About** - Bio, education timeline, and personal info
-3. **Skills** - Technical skills with progress bars
-4. **Projects** - Dynamic grid of featured projects
-5. **GitHub** - Live GitHub profile card and activity
-6. **Contact** - Contact form and direct message channels
-7. **Footer** - Links and social media
-
-### Admin Dashboard (admin.html)
-
-- **Login Page** - Secure authentication
-- **Dashboard** - Statistics and project overview
-- **Project Management** - CRUD operations
-- **Live Preview** - Real-time project card preview
-- **Delete Confirmation** - Safety dialogs
+This allows projects to be added, updated or archived from the database without manually editing the portfolio page.
 
 ---
 
-## 🚀 Getting Started
+## 🐙 GitHub Integration
 
-### Prerequisites
-- Modern web browser (Chrome, Firefox, Safari, Edge)
-- Firebase project setup
-- GitHub account (for API access)
+The portfolio automatically retrieves public GitHub profile information using the GitHub API.
 
-### Installation
+Displayed information includes:
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/mhhridoy7907/Personal_-WebSite.git
-   cd Personal_-WebSite
-   ```
+- Public repositories
+- Followers
+- Following
+- Public gists
+- GitHub profile
+- Account creation date
+- Location
+- Developer bio
 
-2. **Set up Firebase**
-   - Create a Firebase project at [firebase.google.com](https://firebase.google.com)
-   - Enable Firebase Authentication (Email/Password)
-   - Set up Realtime Database with this structure:
-     ```
-     portfolio/
-     └── projects/
-         └── {projectId}/
-             ├── title: "Project Name"
-             ├── shortDescription: "..."
-             ├── fullDescription: "..."
-             ├── image: "URL"
-             ├── github: "URL"
-             ├── live: "URL"
-             ├── technologies: ["tech1", "tech2"]
-             ├── featured: boolean
-             ├── status: "live" | "draft" | "archived"
-             ├── createdAt: timestamp
-             └── updatedAt: timestamp
-     ```
+GitHub username:
 
-3. **Update Firebase Config**
-   - Replace the `firebaseConfig` in both `index.html` and `admin.html` with your Firebase credentials
-
-4. **Deploy to Firebase Hosting**
-   ```bash
-   npm install -g firebase-tools
-   firebase login
-   firebase init hosting
-   firebase deploy
-   ```
-
-5. **Access the live site**
-   - Public portfolio: `https://your-project.web.app/`
-   - Admin panel: `https://your-project.web.app/admin.html`
-
----
-
-## 📋 Project Data Schema
-
-Each project object in Firebase should have this structure:
-
-```javascript
-{
-  title: "String",                    // Project name (max 80 chars)
-  shortDescription: "String",         // Card summary (max 140 chars)
-  fullDescription: "String",          // Detailed description for modal
-  image: "URL",                       // Project thumbnail image
-  github: "URL",                      // GitHub repository link (required)
-  live: "URL",                        // Live demo URL (optional)
-  technologies: ["Array", "Of", "Tags"],  // Tech stack
-  featured: Boolean,                  // Show in featured section
-  status: "live|draft|archived",      // Publication status
-  createdAt: Timestamp,               // Auto-generated
-  updatedAt: Timestamp                // Auto-generated
-}
+```text
+@mhhridoy7907
 ```
 
 ---
 
-## 🔐 Admin Dashboard Access
+## 📊 Portfolio Features
 
-1. Navigate to `/admin.html`
-2. Sign in with your Firebase authentication credentials
-3. **Available Actions:**
-   - ✅ Add new projects
-   - ✏️ Edit existing projects
-   - 🗑️ Delete projects (with confirmation)
-   - 🔍 Search and filter projects
-   - 👁️ Live preview of changes
-   - 📊 View project statistics
+### Hero Section
+
+Introduces MH2 HRIDOY with:
+
+- Current developer role
+- Availability status
+- Short professional bio
+- Project CTA
+- Hiring CTA
+- Social profiles
+- Dynamic GitHub statistics
+
+### About Section
+
+Includes:
+
+- Developer background
+- Education
+- Development journey
+- AI interests
+- Location
+- Remote availability
+
+### Skills Section
+
+Current skill categories include:
+
+- HTML5
+- CSS3
+- JavaScript
+- TypeScript
+- Node.js
+- REST API
+- Firebase
+- MongoDB
+- Firestore
+- AI / LLM APIs
+
+### Projects Section
+
+Projects are loaded dynamically from Firebase and support:
+
+- Featured projects
+- Technology tags
+- Project images
+- Short descriptions
+- Full descriptions
+- GitHub repositories
+- Live demos
+- Project detail modal
+
+### GitHub Section
+
+Provides live developer information and Gitista ranking data.
+
+### Contact Section
+
+Visitors can contact MH2 HRIDOY through:
+
+- Email
+- WhatsApp
+- GitHub
+- Facebook
+- Portfolio contact form
 
 ---
 
-## 🎯 Features in Detail
+## 🎨 Design Philosophy
 
-### Dynamic Projects
-- Projects are stored in Firebase and loaded in real-time
-- Filter by status (Live, Draft, Archived)
-- Featured projects appear at the top
-- Click "Read More" to open detailed modal with full description
-- Direct links to GitHub repo and live demo
+The portfolio follows a modern developer-focused visual identity:
 
-### GitHub Integration
-- Real-time GitHub profile stats (repos, followers)
-- GitHub contribution streak visualization
-- GitHub activity heatmap graph
-- Automatic fallback if API fails
-
-### Contact Form
-- Integrated with Google Apps Script for email notifications
-- Fields: Name, Email, Phone, Country, Subject, Message
-- Validation and error feedback
-- Success/error toast notifications
-- Auto-reset on successful submission
-
-### Responsive Design
-- **Desktop** (1200px+): Full multi-column layouts
-- **Tablet** (768px - 1199px): Optimized grid layouts
-- **Mobile** (< 768px): Single column, touch-optimized
-
----
-
-## 🎨 Customization
-
-### Colors & Theme
-Edit CSS custom properties in `index.html` and `admin.html`:
-```css
-:root {
-  --violet: #7c3aed;
-  --cyan: #06b6d4;
-  --emerald: #10b981;
-  /* ... more colors ... */
-}
+```text
+Dark Interface
+     +
+Neon Violet / Cyan
+     +
+Glassmorphism
+     +
+Micro Animations
+     +
+Interactive Effects
+     =
+MH2 HRIDOY
 ```
 
-### Fonts
-Change font imports in the `<head>`:
-```html
-<link href="https://fonts.googleapis.com/css2?family=Your+Font:wght@400;700&display=swap" rel="stylesheet" />
-```
-
-### Content
-- Update hero section in `#home`
-- Modify about section in `#about`
-- Add/remove skills in `#skills`
-- Projects sync automatically from Firebase
-- Update contact info in `#contact-section`
+The goal is to maintain a balance between **professional presentation, technical identity and interactive user experience**.
 
 ---
 
-## 📱 Browser Support
+## ⚡ Performance & UX
 
-| Browser | Support |
-|---------|---------|
-| Chrome  | ✅ Latest 2 versions |
-| Firefox | ✅ Latest 2 versions |
-| Safari  | ✅ Latest 2 versions |
-| Edge    | ✅ Latest 2 versions |
-| IE 11   | ❌ Not supported |
+The website is designed with:
 
----
-
-## 🔗 API Integration
-
-### GitHub API
-- Endpoint: `https://api.github.com/users/{username}`
-- No authentication required (limited rate: 60 req/hour)
-- Used for: public repos, followers, profile info
-
-### Google Apps Script (Optional)
-- For email notifications on form submission
-- Deploy your own Apps Script endpoint
-- Update `SCRIPT_URL` in `index.html`
+- Lazy-loaded images
+- Responsive layout
+- Reduced-motion support
+- Semantic HTML
+- Accessible navigation
+- Skip-to-content support
+- Optimized animations
+- Dynamic data loading
+- Mobile touch interactions
 
 ---
 
-## 🚨 Environment Variables / Secrets
+## 🔐 Security
 
-Keep your Firebase config safe. If building with a framework, use `.env`:
-```
-VITE_FIREBASE_API_KEY=your_key
-VITE_FIREBASE_AUTH_DOMAIN=your_domain
-VITE_FIREBASE_DATABASE_URL=your_url
-```
+Sensitive Firebase credentials and server-side processing logic should never be exposed through the frontend beyond what Firebase itself requires for client initialization.
 
-For plain HTML deployment, Firebase SDK handles auth via credential restriction (IP/domain restrictions).
+The project uses Firebase's security rules to control database access.
+
+> **Never commit private API keys, service-account credentials or secret tokens to GitHub.**
 
 ---
 
-## 📊 Performance Metrics
+## 🌐 Live Website
 
-- **Lighthouse Score**: 90+ (Performance, Accessibility, SEO)
-- **Page Load**: < 2s on 4G
-- **Time to Interactive**: < 3s
-- **CLS** (Cumulative Layout Shift): < 0.1
-
----
-
-## 🐛 Known Issues & Limitations
-
-- GitHub API has rate limiting (60 requests/hour for unauthenticated)
-- Some external images may fail to load (fallback placeholders provided)
-- Admin panel visible but requires auth to modify data
-- Contribution graph requires GitHub account to be public
+<p align="center">
+  <a href="https://mh2-hridoy.web.app/">
+    <strong>Visit MH2 HRIDOY Portfolio →</strong>
+  </a>
+</p>
 
 ---
 
-## 🤝 Contributing
+## 📬 Contact
 
-Contributions are welcome! Here's how to contribute:
+**MH2 HRIDOY**
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Make your changes
-4. Commit with descriptive messages (`git commit -m 'Add AmazingFeature'`)
-5. Push to your branch (`git push origin feature/AmazingFeature`)
-6. Open a Pull Request
+📧 Email: `mhhridoy7907@gmail.com`
 
-### Areas for Contribution
-- 🎨 UI/UX improvements
-- 🚀 Performance optimizations
-- ♿ Accessibility enhancements
-- 📱 Mobile responsiveness fixes
-- 🐛 Bug fixes
-- 📚 Documentation improvements
+💬 WhatsApp: `+880 1962-388570`
+
+🐙 GitHub: `@mhhridoy7907`
+
+📍 Sylhet, Bangladesh
 
 ---
 
-## 📝 License
+## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is primarily a personal portfolio.
 
----
-
-## 👤 Author
-
-**Murad Hasan Hridoy**
-- 🌐 Website: [mh2-hridoy.web.app](https://mh2-hridoy.web.app/)
-- 💻 GitHub: [@mhhridoy7907](https://github.com/mhhridoy7907)
-- 📧 Email: mhhridoy7907@gmail.com
-- 💬 WhatsApp: [+880 1962-388570](https://wa.me/8801962388570)
-- 📘 Facebook: [mh.hridoy.567130](https://www.facebook.com/mh.hridoy.567130)
+The source code may be used as a reference for learning and personal development. Please do not copy the branding, personal information, identity or portfolio content and present it as your own.
 
 ---
 
-## 🙋 Support & Questions
+## ⭐ Support
 
-Have questions or need help? Reach out through:
-- Email: mhhridoy7907@gmail.com
-- WhatsApp: [Message me](https://wa.me/8801962388570)
-- Open an issue on [GitHub](https://github.com/mhhridoy7907/Personal_-WebSite/issues)
+If you find this portfolio interesting or useful, consider giving the repository a ⭐ on GitHub.
 
----
+<p align="center">
 
-## 🎉 Acknowledgments
+**Designed & Developed by MH2 HRIDOY**
 
-- Firebase for backend services
-- Font Awesome for icons
-- Google Fonts for typography
-- GitHub API for profile integration
-- Inspired by modern portfolio designs
+`code • build • learn • innovate`
 
----
-
-**⭐ If you find this project useful, please consider giving it a star on GitHub!**
-
----
-
-**Last Updated**: January 2026 
-**Version**: 2.0  
-**Status**: Active Development
+</p>
