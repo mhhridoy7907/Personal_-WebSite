@@ -1,7 +1,7 @@
 
-const SPREADSHEET_ID  = '********************************';
-const CONTACT_SHEET   = '*************';
-const OWNER_EMAIL     = '***********************';
+const SPREADSHEET_ID  = '*************************************';
+const CONTACT_SHEET   = '*************************************';
+const OWNER_EMAIL     = '**************************************';
 
 *
 function doGet(e) {
